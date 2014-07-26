@@ -53,6 +53,10 @@ PlugBotAPI.getAuth({
                 //TODO make '.resdj' command but first discuss resdj as a staff group
             
         }
+        {
+            case ".resdjs":
+                bot.chat("In order to become a residential dj on CYS you must produce your own music (includes originals and remixes). Music produced must fit our genre specifications. Must be somewhat talkative (not completely silent all the time). And you must be a frequent user of CYS");
+        }
     });
 });
 
