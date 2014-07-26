@@ -28,33 +28,29 @@ PlugBotAPI.getAuth({
         qualifier=qualifier.replace(/&gt;/gi, '\>');
         switch (command)
         {
-            case ".hey": //Makes the bot greet the user 
-                bot.chat("Well hey there! @"+data.from);
+            case ".commands": //Returns a list of the most important commands
+                bot.chat("List of Commands: .hey, .soulsamurai, .info, .djinfo, .resdjs");
                 break;
-        }
-        {
-            case ".SoulSamurai":
-                bot.chat("Well hello, noble warrior @"+data.from + ", my job as a SoulSamurai is to protect and server those in need of calming there soul!");
+            case ".hey": 
+                bot.chat("Well hey there! @" + data.from);
                 break;
-        }
-        {
+            case ".soulsamurai":
+                bot.chat("Well hello, noble warrior @" + data.from + ", my job as a SoulSamurai is to protect and serve those in need of calming there soul!");
+                break;
             case ".info":
-                bot.chat("This is a room to enjoy wonderful relaxing chillout tunes. Make sure to be aware of our room's regulations and genre specifications. We focus particularly on electronic chillout. If your new you can view what genres to play by typing '.djinfo'");
+                bot.chat("This is a room to enjoy wonderful relaxing chillout tunes. Make sure to be aware of our room's regulations and genre specifications. We focus particularly on electronic chillout. If you're new you can view what genres to play by typing '.djinfo'");
                 break;
-        }
-        {
             case ".djinfo":
-                bot.chat("We love good music and when are users stick to the CYS genres it makes users expience on CYS much better! So if your going to join the waitlist and you are new to CYS here are a few guide lines:");
-                bot.chat("CYS is usually farelly open as to what you can play, we take pride in are open genre selection. Try to focus on electronic chillout songs acoustics are sometimes exceptional as long as they're mellow and calm your soul. ");
-                bot.chat("some good examples of :thumbsup: genres are as listed: Ambient, Chillstep, Chillwave, Deep House, Downtempo, Drone, Dub, Electronica, Instrumental Hip Hop, Jazz, Liquid D&B, Psychill, Trill, Triphop" + "Vocals are better soft or absent.");
+                bot.chat("We love good music and when our users stick to the CYS genres it makes the user experience on CYS much better! So if you're going to join the waitlist and you are new to CYS here are a few guidelines:");
+                bot.chat("CYS is usually fairly open as to what you can play, we take pride in are open genre selection. Try to focus on electronic chillout songs. Acoustics are sometimes an exception as long as they're mellow and calm your soul. ");
+                bot.chat("Some good examples of :thumbsup: genres are as listed: Ambient, Chillstep, Chillwave, Deep House, Downtempo, Drone, Dub, Electronica, Instrumental Hip Hop, Jazz, Liquid D&B, Psychill, Trill, Triphop. Vocals are better soft or absent.");
                 bot.chat("Some examples of :thumbsdown: genres: Dubstep, Electro, Hip Hop, House, Indie, J-Pop, K-Pop, Metal, Pop, Rap, Reggae, Rock, Screamo, Trance, Trap");
-                bot.chat("We also appreciate hearing new songs and underground tracks! If your an artist your self we would love to hear what you have to play and if you stick around for a bit and people really like your tracks, we can talk further and will make you a residential dj on CYS! for more info type '.resdjs'");
-                bot.chat("Final tips for djing on CYS, try to keep the genre in flow for example if someone plays a dub song before your turn is time to play try your best to follow up with a simaller sounding song or another stick to that genre that was played before your song.");
-               
-        }
-        {
+                bot.chat("We also appreciate hearing new songs and underground tracks! If you're an artist yourself we would love to hear what you have to play. If you stick around for a bit and people really like your tracks, we can talk further about making you a residenti dj on CYS! For more info type '.resdjs'");
+                bot.chat("Final tips for djing on CYS, try to keep the genre in flow. For example, if someone plays a dub song before your turn and it's your turn to play, try your best to follow up with a similar sounding song. Stick to that genre that was played before your song.");
+                break;
             case ".resdjs":
-                bot.chat("In order to become a residential dj on CYS you must produce your own music (includes originals and remixes). Music produced must fit our genre specifications. Must be somewhat talkative (not completely silent all the time). And you must be a frequent user of CYS");
+                bot.chat("In order to become a resident dj on CYS you must produce your own music (includes originals and remixes). Music produced must fit our genre specifications. Must be somewhat active in chat (not completely silent all the time). And you must be a frequent user of CYS");
+                break;
         }
     });
 });
