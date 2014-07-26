@@ -50,8 +50,7 @@ PlugBotAPI.getAuth({
                 bot.chat("Some examples of :thumbsdown: genres: Dubstep, Electro, Hip Hop, House, Indie, J-Pop, K-Pop, Metal, Pop, Rap, Reggae, Rock, Screamo, Trance, Trap");
                 bot.chat("We also appreciate hearing new songs and underground tracks! If your an artist your self we would love to hear what you have to play and if you stick around for a bit and people really like your tracks, we can talk further and will make you a residential dj on CYS! for more info type '.resdjs'");
                 bot.chat("Final tips for djing on CYS, try to keep the genre in flow for example if someone plays a dub song before your turn is time to play try your best to follow up with a simaller sounding song or another stick to that genre that was played before your song.");
-                //TODO make '.resdj' command but first discuss resdj as a staff group
-            
+               
         }
         {
             case ".resdjs":
