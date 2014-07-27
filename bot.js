@@ -134,7 +134,7 @@ PlugBotAPI.getAuth({
                 bot.chat("Types of music we encourage in Calm Your Soul: Ambient, Chillstep, Chillwave, Deep House, Downtempo, Drone, Dub, Electronica, Instrumental Hip Hop, Jazz, Liquid D&B, Psychill, Trill, Triphop. Vocals are better soft or absent.");
                 break;
             case ".noplay":
-                bot.chat("Dubstep, Electro, Hip Hop, House, Indie, J-Pop, K-Pop, Metal, Pop, Rap, Reggae, Rock, Screamo, Trance, Trap");
+                bot.chat("DO NOT PLAY: Dubstep, Electro, Hip Hop, House, Indie, J-Pop, K-Pop, Metal, Pop, Rap, Reggae, Rock, Screamo, Trance, Trap");
                 break; 
             case ".hey": 
                 bot.chat("Well hey there! @" + data.from);
