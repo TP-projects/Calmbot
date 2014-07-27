@@ -159,8 +159,8 @@ PlugBotAPI.getAuth({
                 bot.chat("We love good music, and when our users stick to the CYS genre specifications it makes the user experience in CYS that much better!");
                 bot.chat("So if you're going to join the waitlist and you are new to CYS make sure to check out our room's genre specifications! (.yesplay &  .noplay)");
                 break;
-            case ".resdjs":
-                bot.chat("In order to become a resident dj on CYS you must produce your own music (includes originals and remixes). Music produced must fit our genre specifications. And you must be a frequent user of CYS.");
+            case ".oc":
+                bot.chat("We also appreciate hearing new songs and underground tracks! If you're an artist, we would love to hear what you have to play. If you stick around for a bit and people enjoy your tracks, we can talk further about making you a residential DJ!");
                 break;
 
             //Mod commands
