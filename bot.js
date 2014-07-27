@@ -5,7 +5,7 @@ var lastfm = new Lastfm({ //Get own last.fm account with api_key, api_secret, us
     api_key: 'd657909b19fde5ac1491b756b6869d38',
     api_secret: '571e2972ae56bd9c1c6408f13696f1f3',
     username: 'BaderBombs',
-    password: 'xxx'
+    password: 'rahtZ456'
 });
 
 var LastfmAPI = require('lastfmapi');
@@ -29,6 +29,7 @@ PlugBotAPI.getAuth({
     var ROOM = 'calm-your-soul'; //Enter your room name
     bot.connect(ROOM);
 
+    //Event which triggers when the bot joins the room
     bot.on('roomJoin', function(data) {
         bot.getMedia(function(currentMedia) { 
             media = currentMedia; 
@@ -56,6 +57,8 @@ PlugBotAPI.getAuth({
         bot.getDJ(function(currentDJ) { 
             dj = currentDJ; 
         });
+        bot.chat("Last song: :thumbsup: " + data.lastPlay.score.positive + " :star: " + data.lastPlay.score.curates + " :thumbsdown: " + data.lastPlay.score.negative);
+        bot.chat(":musical_note: " + data.dj.username + " started playing \"" + data.media.title + "\" by " + data.media.author + " :musical_note:");
     });
 
     //Event which triggers when the DJ history updates
@@ -143,6 +146,10 @@ PlugBotAPI.getAuth({
                 break;
             case ".soulsamurai":
                 bot.chat("Well hello, noble warrior @" + data.from + ", my job as a SoulSamurai is to protect and serve those in need of calming their soul!");
+                break;
+            case ".fb":
+            case ".facebook": //returns the url to the CYS facebook page
+                bot.chat("True enlightenment lies within the like button on our Facebook page! http://facebook.com/calmyoursoul.plugdj :thumbsup:");
                 break;
             case ".info":
                 bot.chat("This is a room to enjoy wonderful relaxing chillout tunes. Make sure to be aware of our room's regulations and genre specifications. We focus particularly on electronic chillout. If you're new you can view what genres to play by typing '.djinfo'");
@@ -468,10 +475,6 @@ PlugBotAPI.getAuth({
                         }
                     }
                 });
-                break;
-            case ".fb"
-            case ".facebook": //returns the url to the CYS facebook page
-                bot.chat("True enlightenment lies within the like button on our face book page! https://www.facebook.com/pages/Calm-Your-Soul/1459317924326252?sk :thumbsup:");
                 break;
         }
     });
