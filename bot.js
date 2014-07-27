@@ -154,6 +154,7 @@ PlugBotAPI.getAuth({
                 break; 
             case ".info2":
                 bot.chat("When DJ'ing in CYS, try to keep the genre in flow. For example, if someone plays a dub song before your turn and it's your turn to play, try your best to follow up with a similar sounding song. Stick to the genre that was played before your own!");
+                break;
             case ".djinfo":
                 bot.chat("We love good music, and when our users stick to the CYS genre specifications it makes the user experience in CYS that much better!");
                 bot.chat("So if you're going to join the waitlist and you are new to CYS make sure to check out our room's genre specifications! (.yesplay &  .noplay)");
