@@ -152,8 +152,10 @@ PlugBotAPI.getAuth({
                 bot.chat("True enlightenment lies within the like button on our Facebook page! http://facebook.com/calmyoursoul.plugdj :thumbsup:");
                 break;
             case ".info":
-                bot.chat("This is a room to enjoy wonderful relaxing chillout tunes. Make sure to be aware of our room's regulations and genre specifications. We focus particularly on electronic chillout. If you're new you can view what genres to play by typing '.djinfo'");
+                bot.chat("This is a room to enjoy wonderful and relaxing chillout tunes. Make sure to be aware of our room's regulations and genre specifications. We focus particularly on electronic chillout and other mellow tunes, as well as some acoustic. If you're new here you can learn about our room's regulations by typing '.info2'");
                 break; 
+            case ".info2":
+                bot.chat("When DJ'ing in CYS, try to keep the genre in flow. For example, if someone plays a dub song before your turn and it's your turn to play, try your best to follow up with a similar sounding song. Stick to the genre that was played before your own!");
             case ".djinfo":
                 bot.chat("We love good music, and when our users stick to the CYS genre specifications it makes the user experience in CYS that much better!");
                 bot.chat("So if you're going to join the waitlist and you are new to CYS make sure to check out our room's genre specifications! (.yesplay &  .noplay)");
