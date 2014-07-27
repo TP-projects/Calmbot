@@ -134,6 +134,7 @@ PlugBotAPI.getAuth({
                 bot.chat("DO NOT PLAY: Dubstep, Electro, Hip Hop, House, Indie, J-Pop, K-Pop, Metal, Pop, Rap, Reggae, Rock, Screamo, Trance, and Trap");
                 break; 
             case ".hey": 
+            case ".bot":
                 bot.chat("Well hey there! @" + data.from);
                 break;
             case ".props":
