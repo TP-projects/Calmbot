@@ -131,10 +131,10 @@ PlugBotAPI.getAuth({
                 bot.chat("I am yours to command noble leader: .banuser, .front, .join/.leave, .move, .props, .skip, .warn");
                 break;  
             case ".yesplay":
-                bot.chat("Types of music we encourage in Calm Your Soul: Ambient, Chillstep, Chillwave, Deep House, Downtempo, Drone, Dub, Electronica, Instrumental Hip Hop, Jazz, Liquid D&B, Psychill, Trill, Triphop. Vocals are better soft or absent.");
+                bot.chat("Types of music we encourage in Calm Your Soul: Ambient, Chillstep, Chillwave, Deep House, Downtempo, Drone, Dub, Electronica, Instrumental Hip Hop, Jazz, Liquid D&B, Psychill, Trill, and Triphop. Vocals are better soft or absent.");
                 break;
             case ".noplay":
-                bot.chat("DO NOT PLAY: Dubstep, Electro, Hip Hop, House, Indie, J-Pop, K-Pop, Metal, Pop, Rap, Reggae, Rock, Screamo, Trance, Trap");
+                bot.chat("DO NOT PLAY: Dubstep, Electro, Hip Hop, House, Indie, J-Pop, K-Pop, Metal, Pop, Rap, Reggae, Rock, Screamo, Trance, and Trap");
                 break; 
             case ".hey": 
                 bot.chat("Well hey there! @" + data.from);
