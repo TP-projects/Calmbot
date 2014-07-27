@@ -122,10 +122,10 @@ PlugBotAPI.getAuth({
         {
             //Regular commands
             case ".commands":
-                bot.chat("List of Commands: .album, .artist, .djinfo, .events, .genre, .info, .similar .soundcloud, .track, .yesplay/.noplay");
+                bot.chat("Command me as you must: .album, .artist, .djinfo, .events, .genre, .info, .similar .soundcloud, .track, .yesplay/.noplay");
                 break;
             case ".modcommands":
-                bot.chat("List of Commands: .banuser, .front, .join/.leave, .move, .props, .skip, .warn");
+                bot.chat("I am yours to command noble leader: .banuser, .front, .join/.leave, .move, .props, .skip, .warn");
                 break;  
             case ".yesplay":
                 bot.chat("Types of music we encourage in Calm Your Soul: Ambient, Chillstep, Chillwave, Deep House, Downtempo, Drone, Dub, Electronica, Instrumental Hip Hop, Jazz, Liquid D&B, Psychill, Trill, Triphop. Vocals are better soft or absent.");
