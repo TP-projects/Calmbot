@@ -161,7 +161,7 @@ PlugBotAPI.getAuth({
                 bot.chat("Final tips for djing on CYS, try to keep the genre in flow. For example, if someone plays a dub song before your turn and it's your turn to play, try your best to follow up with a similar sounding song. Stick to that genre that was played before your song.");
                 break;
             case ".resdjs":
-                bot.chat("In order to become a resident dj on CYS you must produce your own music (includes originals and remixes). Music produced must fit our genre specifications. Must be somewhat active in chat (not completely silent all the time). And you must be a frequent user of CYS");
+                bot.chat("In order to become a resident dj on CYS you must produce your own music (includes originals and remixes). Music produced must fit our genre specifications. And you must be a frequent user of CYS");
                 break;
 
             //Mod commands
