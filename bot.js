@@ -1,5 +1,21 @@
 var PlugBotAPI = require('plugbotapi'); //Use 'npm install plugbotapi'
 
+var Lastfm = require('simple-lastfm'); //Use 'npm install simple-lastfm'
+var lastfm = new Lastfm({ //Get own last.fm account with api_key, api_secret, username, and password
+    api_key: 'd657909b19fde5ac1491b756b6869d38',
+    api_secret: '571e2972ae56bd9c1c6408f13696f1f3',
+    username: 'BaderBombs',
+    password: 'xxx'
+});
+
+var LastfmAPI = require('lastfmapi');
+var lfm = new LastfmAPI({
+    'api_key' : 'd657909b19fde5ac1491b756b6869d38',
+    'secret' : '571e2972ae56bd9c1c6408f13696f1f3'
+});
+
+var request = require('request'); //Use 'npm install request'
+
 // Instead of providing the AUTH, you can use this static method to get the AUTH cookie via twitter login credentials:
 PlugBotAPI.getAuth({
     username: 'SoulSamuraiBot',
@@ -104,9 +120,9 @@ PlugBotAPI.getAuth({
         }
         switch (command)
         {
-            //Room commands
+            //Regular commands
             case ".commands":
-                bot.chat("List of Commands: .djinfo, .info, .yesplay/.noplay");
+                bot.chat("List of Commands: .album, .artist, .djinfo, .events, .genre, .info, .similar .soundcloud, .track, .yesplay/.noplay");
                 break;
             case ".modcommands":
                 bot.chat("List of Commands: .banuser, .front, .join/.leave, .move, .props, .skip, .warn");
@@ -120,7 +136,7 @@ PlugBotAPI.getAuth({
             case ".hey": 
                 bot.chat("Well hey there! @" + data.from);
                 break;
-            case ".props": //Makes the bot give props to the user
+            case ".props":
             case ".propsicle":
                 bot.chat("You have learned the way of the samurai @"+dj.username);
                 bot.woot();
@@ -197,6 +213,261 @@ PlugBotAPI.getAuth({
                     bot.chat("Skipping!");
                     bot.moderateForceSkip(dj.id);
                 }
+                break;
+
+            //Last.fm + other music commands
+            case ".artist": //Returns Last.fm info about the current artist, .artist [givenArtist] returns Last.fm info about a given artist
+                var artistChoice="";
+                if (qualifier==""){
+                    artistChoice=media.author;
+                }
+                else{
+                    artistChoice=qualifier;
+                }
+                lastfm.getArtistInfo({
+                    artist: artistChoice,
+                    callback: function(result) { 
+                        if (result.success==true){
+                            if (result.artistInfo.bio.summary!=""){
+                                var summary=result.artistInfo.bio.summary;
+                                summary=summary.replace(/(&quot;)/g, '"');
+                                summary=summary.replace(/(&amp;)/g, '&');
+                                summary=summary.replace(/(&eacute;)/g, 'é');
+                                summary=summary.replace(/(&aacute;)/g, 'á');
+                                summary=summary.replace(/(&auml;)/g, 'ä');
+                                summary=summary.replace(/(&iacute;)/g, 'í');
+                                summary=summary.replace(/(&oacute;)/g, 'ó');
+                                summary=summary.replace(/(&Scaron;)/g, 'Š');
+                                summary=summary.replace(/<[^>]+>/g, '');
+                                if (summary.indexOf(" 1) ") != -1){
+                                    summary=summary.substring(summary.lastIndexOf(" 1) ")+4);
+                                    if (summary.indexOf(" 2) ") != -1){
+                                        summary=summary.substring(0, summary.lastIndexOf(" 2)"));
+                                    }
+                                }   
+                                else if (summary.indexOf(" 1. ") != -1){
+                                    summary=summary.substring(summary.lastIndexOf(" 1. ")+4);
+                                    if (summary.indexOf(" 2. ") != -1){
+                                        summary=summary.substring(0, summary.lastIndexOf(" 2."));
+                                    }
+                                }     
+                                else if (summary.indexOf(" (1) ") != -1){
+                                    summary=summary.substring(summary.lastIndexOf(" (1) ")+4);
+                                    if (summary.indexOf(" (2) ") != -1){
+                                        summary=summary.substring(0, summary.lastIndexOf(" (2)"));
+                                    }
+                                }        
+                                if (summary.length>250){
+                                    summary=summary.substring(0, 247)+"...";
+                                }                           
+                                bot.chat(summary); 
+                                var lastfmArtist=artistChoice;
+                                lastfmArtist=lastfmArtist.replace(/ /g, '+');
+                                bot.chat("For more info: http://www.last.fm/music/" + lastfmArtist);
+                            }
+                            else {
+                                bot.chat("No artist info found.");
+                            }
+                        }
+                        else {
+                            bot.chat("No artist info found.");
+                        }
+                    }
+                });
+                break;
+            case ".track": //Returns Last.fm info about the current song
+                lastfm.getTrackInfo({
+                    artist: media.author,
+                    track: media.title,
+                    callback: function(result) {
+                        if (result.success==true){
+                            if (result.trackInfo.wiki!=undefined){
+                                var summary=result.trackInfo.wiki.summary;
+                                summary=summary.replace(/(&quot;)/g, '"');
+                                summary=summary.replace(/(&amp;)/g, '&');
+                                summary=summary.replace(/(&eacute;)/g, 'é');
+                                summary=summary.replace(/(&aacute;)/g, 'á');
+                                summary=summary.replace(/(&auml;)/g, 'ä');
+                                summary=summary.replace(/(&iacute;)/g, 'í');
+                                summary=summary.replace(/(&oacute;)/g, 'ó');
+                                summary=summary.replace(/(&Scaron;)/g, 'Š');
+                                summary=summary.replace(/<[^>]+>/g, '');
+                                if (summary.length>250){
+                                    summary=summary.substring(0, 247)+"...";
+                                }  
+                                bot.chat(summary);
+                            }
+                            else {
+                                bot.chat("No track info found.");
+                            }
+                        }
+                        else {
+                            bot.chat("No track info found.");
+                        }
+                    }
+                });
+                break;
+            case ".genre": //Returns the genres of the current artist, .genre [givenArtist] returns the genres of a given artist
+                var artistChoice="";
+                if (qualifier==""){
+                    artistChoice=media.author;
+                    trackChoice=media.title;
+                }
+                else{
+                    artistChoice=qualifier;
+                    trackChoice=null;
+                }
+                lastfm.getTags({
+                    artist: artistChoice,
+                    track: trackChoice,
+                    callback: function(result) {
+                        var tags = "";
+                        if (result.tags!=undefined){
+                            for (var i=0; i<result.tags.length; i++){
+                                tags+=result.tags[i].name;
+                                tags+=", ";
+                            }
+                            tags=tags.substring(0, tags.length-2);
+                        }
+                        if (qualifier==""){
+                            if (tags!=""){
+                                bot.chat("Genre of "+trackChoice+" by "+artistChoice+": "+tags);
+                            }
+                            else{
+                                bot.chat("No genre found.");
+                            }
+                        }
+                        else{
+                            if (tags!=""){
+                                bot.chat("Genre of "+artistChoice+": "+tags);
+                            }
+                            else{
+                                bot.chat("No genre found.");
+                            }
+                        }
+                    }
+                });
+                break;
+            case ".album": //Returns the album of the current song
+                lfm.track.getInfo({
+                    'artist' : media.author,
+                    'track' : media.title
+                }, function (err, track) {
+                    if (track!=undefined){
+                        lfm.album.getInfo({
+                            'artist' : media.author,
+                            'album' : track.album.title
+                        }, function (err, album) {
+                            var albumMessage = track.name + " is from the album " + track.album.title;
+                            if (album.wiki!=undefined){
+                                if (album.wiki.summary.indexOf('released on') != -1){
+                                    var year = album.wiki.summary.substring(album.wiki.summary.indexOf('released on')).split(' ')[4].substring(0,4);
+                                    albumMessage = albumMessage + " (" + year + ")";
+                                }
+                            }
+                            bot.chat(albumMessage);
+                            bot.chat("Check out the full album: " + track.album.url);
+                        });
+                    }
+                    else{
+                        bot.chat("No album found.");
+                    }
+                });
+                break;
+            case ".similar": //Returns similar artists of the current artist, .similar [givenArtist] returns similar artists of a given artist
+                var artistChoice="";
+                if (qualifier==""){
+                    artistChoice=media.author;
+                }
+                else{
+                    artistChoice=qualifier;
+                }
+                lfm.artist.getSimilar({
+                    'limit' : 7,
+                    'artist' : artistChoice,
+                    'autocorrect' : 1
+                }, function (err, similarArtists) {
+                    if (similarArtists!=undefined){
+                        var artists = '';
+                        for (var i=0; i<similarArtists.artist.length; i++){
+                            artists = artists + similarArtists.artist[i].name + ", ";
+                        }
+                        artists = artists.substring(0, artists.length-2);
+                        bot.chat("Similar artists to " + artistChoice + ": " + artists);
+                    }
+                    else{
+                        bot.chat("No similar artists found.");
+                    }
+                });
+                break;
+            case ".events": //Returns the artist's upcoming events, .events [givenArtist] returns a given artist's upcoming events
+                var artistChoice="";
+                if (qualifier==""){
+                    artistChoice=media.author;
+                }
+                else{
+                    artistChoice=qualifier;
+                }
+                lfm.artist.getEvents({
+                    'limit' : 3,
+                    'artist' : artistChoice
+                }, function (err, events) {
+                    if (events!=undefined){
+                        var upcomingEvents = '';
+                        if (!(events.event instanceof Array)){
+                            events.event = [events.event];
+                        }
+                        for (var i=0; i<events.event.length; i++){
+                            var day = '';
+                            if (events.event[i].startDate.split(/\s+/).slice(1,2).join(" ").slice(0,1) == '0'){
+                                day = events.event[i].startDate.split(/\s+/).slice(1,2).join(" ").slice(1,2);
+                            }
+                            else{
+                                day = events.event[i].startDate.split(/\s+/).slice(1,2).join(" ");
+                            }
+                            upcomingEvents = upcomingEvents + events.event[i].startDate.split(/\s+/).slice(2,3).join(" ") + "/" + day + "/" + events.event[i].startDate.split(/\s+/).slice(3,4).join(" ").slice(-2) + " at " + events.event[i].venue.name + " in " + events.event[i].venue.location.city + ", " + events.event[i].venue.location.country + "; ";
+                        }
+                        upcomingEvents = upcomingEvents.substring(0, upcomingEvents.length-2);
+                        upcomingEvents=upcomingEvents.replace(/Jan/g, '1');
+                        upcomingEvents=upcomingEvents.replace(/Feb/g, '2');
+                        upcomingEvents=upcomingEvents.replace(/Mar/g, '3');
+                        upcomingEvents=upcomingEvents.replace(/Apr/g, '4');
+                        upcomingEvents=upcomingEvents.replace(/May/g, '5');
+                        upcomingEvents=upcomingEvents.replace(/Jun/g, '6');
+                        upcomingEvents=upcomingEvents.replace(/Jul/g, '7');
+                        upcomingEvents=upcomingEvents.replace(/Aug/g, '8');
+                        upcomingEvents=upcomingEvents.replace(/Sep/g, '9');
+                        upcomingEvents=upcomingEvents.replace(/Oct/g, '10');
+                        upcomingEvents=upcomingEvents.replace(/Nov/g, '11');
+                        upcomingEvents=upcomingEvents.replace(/Dec/g, '12');
+                        bot.chat("Upcoming events for " + artistChoice + ": " + upcomingEvents);
+                    }
+                    else{
+                        bot.chat("No upcoming events found.");
+                    }
+                });
+                break;
+            case ".sc":
+            case ".soundcloud": //Returns the current artist's SC page, .soundcloud [givenArtist] returns a given artist's SC page
+                var artistChoice="";
+                if (qualifier==""){
+                    artistChoice = media.author;
+                }
+                else{
+                    artistChoice=qualifier;
+                }
+                var link = 'http://api.soundcloud.com/users.json?q=' + artistChoice + '&consumer_key=apigee';
+                request(link, function (error, response, body) {
+                    if (!error && response.statusCode == 200) {
+                        var info = JSON.parse(body);
+                        if (info[0] != undefined){
+                            bot.chat(info[0].username + ": " + info[0].permalink_url);
+                        }
+                        else{
+                            bot.chat("No soundcloud found.");
+                        }
+                    }
+                });
                 break;
         }
     });
