@@ -469,6 +469,9 @@ PlugBotAPI.getAuth({
                     }
                 });
                 break;
+            case ".fb"
+            case ".facebook": //returns the url to the CYS facebook page
+                bot.chat("True enlightenment lies within the like button on our face book page! https://www.facebook.com/pages/Calm-Your-Soul/1459317924326252?sk :thumbsup:")
         }
     });
 });
