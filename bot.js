@@ -125,11 +125,8 @@ PlugBotAPI.getAuth({
         {
             //Regular commands
             case ".commands":
-                bot.chat("Command me as you must: .album, .artist, .djinfo, .events, .genre, .info, .similar .soundcloud, .track, .yesplay/.noplay");
+                bot.chat("Command me as you must: .album, .artist, .djinfo, .events, .genre, .info, .similar .soundcloud, .track, .yesplay, .noplay");
                 break;
-            case ".modcommands":
-                bot.chat("I am yours to command noble leader: .banuser, .front, .join/.leave, .move, .props, .skip, .warn");
-                break;  
             case ".yesplay":
                 bot.chat("Types of music we encourage in Calm Your Soul: Ambient, Chillstep, Chillwave, Deep House, Downtempo, Drone, Dub, Electronica, Instrumental Hip Hop, Jazz, Liquid D&B, Psychill, Trill, and Triphop. Vocals are better soft or absent.");
                 break;
@@ -165,6 +162,12 @@ PlugBotAPI.getAuth({
                 break;
 
             //Mod commands
+            case ".modcommands":
+                if (isMod){
+                    bot.chat("I am yours to command noble leader: .banuser, .front, .join, .leave, .move, .props, .skip, .warn");
+                    break;  
+                }
+                break;
             case ".warn": //Skips a user playing an off-genre song
                 if (isMod){
                     bot.chat("@" + dj.username + " Your tune does not fall within the established genre of Calm Your Soul. Please type .noplay or .yesplay for more info.");
