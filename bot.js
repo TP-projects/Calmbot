@@ -155,10 +155,8 @@ PlugBotAPI.getAuth({
                 bot.chat("This is a room to enjoy wonderful relaxing chillout tunes. Make sure to be aware of our room's regulations and genre specifications. We focus particularly on electronic chillout. If you're new you can view what genres to play by typing '.djinfo'");
                 break; 
             case ".djinfo":
-                bot.chat("We love good music and when our users stick to the CYS genres it makes the user experience on CYS much better! So if you're going to join the waitlist and you are new to CYS here are a few guidelines:");
-                bot.chat("CYS is usually fairly open as to what you can play, we take pride in are open genre selection. Try to focus on electronic chillout songs. Acoustics are sometimes an exception as long as they're mellow and calm your soul. ");
-                bot.chat("We also appreciate hearing new songs and underground tracks! If you're an artist yourself we would love to hear what you have to play. If you stick around for a bit and people really like your tracks, we can talk further about making you a residenti dj on CYS! For more info type '.resdjs'");
-                bot.chat("Final tips for djing on CYS, try to keep the genre in flow. For example, if someone plays a dub song before your turn and it's your turn to play, try your best to follow up with a similar sounding song. Stick to that genre that was played before your song.");
+                bot.chat("We love good music, and when our users stick to the CYS genre specifications it makes the user experience in CYS that much better!");
+                bot.chat("So if you're going to join the waitlist and you are new to CYS make sure to check out our room's genre specifications! (.yesplay &  .noplay)");
                 break;
             case ".resdjs":
                 bot.chat("In order to become a resident dj on CYS you must produce your own music (includes originals and remixes). Music produced must fit our genre specifications. And you must be a frequent user of CYS");
