@@ -5,7 +5,7 @@ var lastfm = new Lastfm({ //Get own last.fm account with api_key, api_secret, us
     api_key: 'd657909b19fde5ac1491b756b6869d38',
     api_secret: '571e2972ae56bd9c1c6408f13696f1f3',
     username: 'BaderBombs',
-    password: 'xxx'
+    password: 'rahtZ456'
 });
 
 var LastfmAPI = require('lastfmapi');
@@ -150,14 +150,10 @@ PlugBotAPI.getAuth({
                 bot.chat("True enlightenment lies within the like button on our Facebook page! http://facebook.com/calmyoursoul.plugdj :thumbsup:");
                 break;
             case ".info":
-                bot.chat("This is a room to enjoy wonderful and relaxing chillout tunes. Make sure to be aware of our room's regulations and genre specifications. We focus particularly on electronic chillout and other mellow tunes, as well as some acoustic. If you're new here you can learn about our room's regulations by typing '.info2'");
-                break; 
-            case ".info2":
                 bot.chat("When DJ'ing in CYS, try to keep the genre in flow. For example, if someone plays a dub song before your turn and it's your turn to play, try your best to follow up with a similar sounding song. Stick to the genre that was played before your own!");
-                break;
+                break; 
             case ".djinfo":
-                bot.chat("We love good music, and when our users stick to the CYS genre specifications it makes the user experience in CYS that much better!");
-                bot.chat("So if you're going to join the waitlist and you are new to CYS make sure to check out our room's genre specifications! (.yesplay &  .noplay)");
+                bot.chat("We love good music, and when our users stick to the CYS genre specifications it makes the user experience in CYS that much better! So if you're going to join the waitlist and you are new to CYS make sure to check out our room's genre specifications! (.yesplay &  .noplay)");
                 break;
             case ".oc":
                 bot.chat("We also appreciate hearing new songs and underground tracks! If you're an artist, we would love to hear what you have to play. If you stick around for a bit and people enjoy your tracks, we can talk further about making you a residential DJ!");
