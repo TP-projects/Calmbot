@@ -139,7 +139,7 @@ PlugBotAPI.getAuth({
                 break;
             case ".props":
             case ".propsicle":
-                bot.chat("You have learned the way of the samurai @"+dj.username);
+                bot.chat("You have learned the way of the samurai! @"+dj.username);
                 bot.woot();
                 break;
             case ".soulsamurai":
@@ -165,7 +165,7 @@ PlugBotAPI.getAuth({
                 bot.chat("We also appreciate hearing new songs and underground tracks! If you're an artist, we would love to hear what you have to play. If you stick around for a bit and people enjoy your tracks, we can talk further about making you a residential DJ!");
                 break;
             case ".timelimit":
-                bot.chat("Use your judgement accordingly to the amount of listeners in the room. Make sure the song length is within reason, preferably under 14 minutes.");
+                bot.chat("Use your judgement accordingly to the amount of listeners in the room. Make sure the song length is within reason, preferably under 14 minutes. Thanks!");
                 break;
 
             //Mod commands
