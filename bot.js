@@ -59,6 +59,7 @@ PlugBotAPI.getAuth({
         });
         bot.chat("Last song: :thumbsup: " + data.lastPlay.score.positive + " :star: " + data.lastPlay.score.curates + " :thumbsdown: " + data.lastPlay.score.negative);
         bot.chat(":musical_note: " + data.dj.username + " started playing \"" + data.media.title + "\" by " + data.media.author + " :musical_note:");
+        bot.woot();
     });
 
     //Event which triggers when the DJ history updates
@@ -140,7 +141,6 @@ PlugBotAPI.getAuth({
             case ".props":
             case ".propsicle":
                 bot.chat("You have learned the way of the samurai! @"+dj.username);
-                bot.woot();
                 break;
             case ".soulsamurai":
                 bot.chat("Well hello, noble warrior @" + data.from + ", my job as a SoulSamurai is to protect and serve those in need of calming their soul!");
@@ -150,6 +150,12 @@ PlugBotAPI.getAuth({
                 break;
             case ".ak":
                 bot.chat("Chillout is a vibe.");
+                break;
+            case ".calm":
+                bot.chat("Swift as a blade... this song is cutting edge and swiping through @" + data.from + "'s restless soul.");
+                break;
+            case ".soul":
+                bot.chat("This song is cleansing @" + data.from + "'s soul! Great play!");
                 break;
             case ".fb":
             case ".facebook": //returns the url to the CYS facebook page
