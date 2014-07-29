@@ -5,7 +5,7 @@ var lastfm = new Lastfm({ //Get own last.fm account with api_key, api_secret, us
     api_key: 'd657909b19fde5ac1491b756b6869d38',
     api_secret: '571e2972ae56bd9c1c6408f13696f1f3',
     username: 'BaderBombs',
-    password: 'rahtZ456'
+    password: 'xxx'
 });
 
 var LastfmAPI = require('lastfmapi');
@@ -125,7 +125,7 @@ PlugBotAPI.getAuth({
         {
             //Regular commands
             case ".commands":
-                bot.chat("Command me as you must: .album, .artist, .djinfo, .events, .genre, .info, .similar .soundcloud, .track, .yesplay, .noplay");
+                bot.chat("Command me as you must: .album, .artist, .djinfo, .events, .genre, .info, .oc, .similar .soundcloud, .track, .yesplay, .noplay");
                 break;
             case ".yesplay":
                 bot.chat("Types of music we encourage in Calm Your Soul: Ambient, Chillstep, Chillwave, Deep House, Downtempo, Drone, Dub, Electronica, Instrumental Hip Hop, Jazz, Liquid D&B, Psychill, Trill, and Triphop. Vocals are better soft or absent.");
@@ -145,6 +145,12 @@ PlugBotAPI.getAuth({
             case ".soulsamurai":
                 bot.chat("Well hello, noble warrior @" + data.from + ", my job as a SoulSamurai is to protect and serve those in need of calming their soul!");
                 break;
+            case ".discoball":
+                bot.chat("http://media.giphy.com/media/7rzbxdu0ZEXLy/giphy.gif");
+                break;
+            case ".ak":
+                bot.chat("Chillout is a vibe.");
+                break;
             case ".fb":
             case ".facebook": //returns the url to the CYS facebook page
                 bot.chat("True enlightenment lies within the like button on our Facebook page! http://facebook.com/calmyoursoul.plugdj :thumbsup:");
@@ -158,11 +164,14 @@ PlugBotAPI.getAuth({
             case ".oc":
                 bot.chat("We also appreciate hearing new songs and underground tracks! If you're an artist, we would love to hear what you have to play. If you stick around for a bit and people enjoy your tracks, we can talk further about making you a residential DJ!");
                 break;
+            case ".timelimit":
+                bot.chat("Use your judgement accordingly to the amount of listeners in the room. Make sure the song length is within reason, preferably under 14 minutes.");
+                break;
 
             //Mod commands
             case ".modcommands":
                 if (isMod){
-                    bot.chat("I am yours to command noble leader: .banuser, .front, .join, .leave, .move, .props, .skip, .warn");
+                    bot.chat("I am yours to command noble leader: .banuser, .unbanuser, .front, .join, .leave, .move, .props, .skip, .warn");
                     break;  
                 }
                 break;
@@ -181,6 +190,15 @@ PlugBotAPI.getAuth({
                     }
                 }
                 break;
+            case ".unbanuser": //Unbans a user from the room permanently with .unbanuser [givenUser]
+                if (isMod){
+                    for (var j=0; j<users.length; j++){
+                        if (users[j].username == qualifier){
+                            bot.moderateUnbanUser(users[j].id);
+                        }
+                    }
+                }
+                break;    
             case ".move": //Moves a user in the waitlist with .move [givenUser], [givenSpot]
                 if (isMod){
                     for (var j=0; j<users.length; j++){
