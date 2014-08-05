@@ -129,7 +129,7 @@ PlugBotAPI.getAuth({
                 bot.chat("Command me as you must: .album, .artist, .djinfo, .events, .genre, .info, .oc, .similar .soundcloud, .track, .yesplay, .noplay");
                 break;
             case ".yesplay":
-                bot.chat("Types of music we encourage in Calm Your Soul: Acoustic (light), Ambient, Ambient Post-rock, Chillstep, Chillwave, Chill Hip Hop & Rap, Deep House, Downtempo, Drone, Dub, Electronica, Electronic Indie, Indie Chill, Jazz, Liquid D&B, Progressive House, Psychill, Swing, Trill, and Triphop.");
+                bot.chat("Types of music we encourage in Calm Your Soul: Acoustic (light), Chill Hip Hop & Rap, Deep House, Electronic, Indie Chill, Jazz/Swing, Liquid D&B, Progressive House, and Psychill. Vocals are better soft or absent.");
                 break;
             case ".noplay":
                 bot.chat("DO NOT PLAY: Anime, Brostep, Classical, Dubstep, Hip Hop, Indie Pop, Indie Rock, J-Pop, K-Pop, Metal, Pop, Rap, Reggae, Rock, and Screamo, Ska, Techno, Trance, and Trap.");
