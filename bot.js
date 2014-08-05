@@ -5,7 +5,7 @@ var lastfm = new Lastfm({ //Get own last.fm account with api_key, api_secret, us
     api_key: 'd657909b19fde5ac1491b756b6869d38',
     api_secret: '571e2972ae56bd9c1c6408f13696f1f3',
     username: 'BaderBombs',
-    password: 'xxx'
+    password: 'rahtZ456'
 });
 
 var LastfmAPI = require('lastfmapi');
@@ -129,10 +129,10 @@ PlugBotAPI.getAuth({
                 bot.chat("Command me as you must: .album, .artist, .djinfo, .events, .genre, .info, .oc, .similar .soundcloud, .track, .yesplay, .noplay");
                 break;
             case ".yesplay":
-                bot.chat("Types of music we encourage in Calm Your Soul: Ambient, Chillstep, Chillwave, Deep House, Downtempo, Drone, Dub, Electronica, Instrumental Hip Hop, Jazz, Liquid D&B, Psychill, Trill, and Triphop. Vocals are better soft or absent.");
+                bot.chat("Types of music we encourage in Calm Your Soul: Acoustic (light), Ambient, Ambient Post-rock, Chillstep, Chillwave, Chill Hip Hop & Rap, Deep House, Downtempo, Drone, Dub, Electronica, Electronic Indie, Indie Chill, Jazz, Liquid D&B, Progressive House, Psychill, Swing, Trill, and Triphop.");
                 break;
             case ".noplay":
-                bot.chat("DO NOT PLAY: Dubstep, Electro, Hip Hop, House, Indie, J-Pop, K-Pop, Metal, Pop, Rap, Reggae, Rock, Screamo, Trance, and Trap");
+                bot.chat("DO NOT PLAY: Anime, Brostep, Classical, Dubstep, Hip Hop, Indie Pop, Indie Rock, J-Pop, K-Pop, Metal, Pop, Rap, Reggae, Rock, and Screamo, Ska, Techno, Trance, and Trap.");
                 break; 
             case ".hey": 
             case ".bot":
